@@ -25,7 +25,7 @@ In addition to the [prices.html](src/main/resources/META-INF/resources/prices.ht
 
 * `PriceProducer` - the [PriceProducer](src/main/java/org/acme/jms/PriceProducer.java) sends random prices to a JMS queue.
 * `PriceConsumer` - the [PriceConsumer](src/main/java/org/acme/jms/PriceConsumer.java) receives the JMS message and stores the last price.
-* `PriceResource`  - the [PriceResource](src/main/java/org/acme/jms/PriceResource.java) is able to sent the last price of the PriceConsumer back to the browser.
+* `PriceResource`  - the [PriceResource](src/main/java/org/acme/jms/PriceResource.java) gets the latest price from the PriceConsumer and returns it to the browser.
 
 The configuration is located in the application configuration.
 
