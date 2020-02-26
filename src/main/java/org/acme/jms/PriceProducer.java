@@ -1,4 +1,4 @@
-package org.acme.artemis;
+package org.acme.jms;
 
 import java.util.Random;
 import java.util.concurrent.Executors;

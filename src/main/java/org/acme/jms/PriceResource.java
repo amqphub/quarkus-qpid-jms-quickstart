@@ -1,4 +1,4 @@
-package org.acme.artemis;
+package org.acme.jms;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

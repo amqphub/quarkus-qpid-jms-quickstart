@@ -21,11 +21,11 @@ Then, open your browser to [http://localhost:8080/prices.html](http://localhost:
 
 ## Anatomy
 
-In addition to the `prices.html` page, the application is composed by 3 components:
+In addition to the [prices.html](src/main/resources/META-INF/resources/prices.html) page, the application is composed by 3 components:
 
-* `PriceProducer` - the `PriceProducer` sends random prices to a JMS queue.
-* `PriceConsumer` - the `PriceConsumer` receives the JMS message and stores the last price.
-* `PriceResource`  - the `PriceResource` is able to sent the last price of the PriceConsumer back to the browser.
+* `PriceProducer` - the [PriceProducer](src/main/java/org/acme/jms/PriceProducer.java) sends random prices to a JMS queue.
+* `PriceConsumer` - the [PriceConsumer](src/main/java/org/acme/jms/PriceConsumer.java) receives the JMS message and stores the last price.
+* `PriceResource`  - the [PriceResource](src/main/java/org/acme/jms/PriceResource.java) is able to sent the last price of the PriceConsumer back to the browser.
 
 The configuration is located in the application configuration.
 
