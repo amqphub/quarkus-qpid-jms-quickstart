@@ -1,12 +1,12 @@
-# Quarkus Artemis JMS
+# Quarkus Qpid JMS Quickstart
 
-This project illustrates how you can use Artemis JMS with Quarkus.
+This project illustrates how you can use the [Apache Qpid](https://qpid.apache.org/) JMS client with [Quarkus](https://quarkus.io/) to interact with AMQP 1.0 servers using the [Quarkus Qpid JMS](https://github.com/amqphub/quarkus-qpid-jms) extension.
 
-## Artemis server
+## AMQP server
 
-First you need an Artemis server. You can follow the instructions from the [Apache Artemis web site](https://activemq.apache.org/components/artemis/) or run via docker:
+To use the quickstart, you first need a running AMQP 1.0 server. For example, you can follow the instructions from the [Apache ActiveMQ Artemis web site](https://activemq.apache.org/components/artemis/), or run the broker using docker:
 ```bash
-docker run -it --rm -p 8161:8161 -p 61616:61616 -e ARTEMIS_USERNAME=quarkus -e ARTEMIS_PASSWORD=quarkus vromero/activemq-artemis:2.9.0-alpine
+docker run -it --rm -p 8161:8161 -p 61616:61616 -p 5672:5672 -e ARTEMIS_USERNAME=quarkus -e ARTEMIS_PASSWORD=quarkus vromero/activemq-artemis:2.11.0-alpine
 ```
 
 ## Start the application
@@ -35,6 +35,10 @@ You can compile the application into a native binary using:
 
 `mvn clean package -Pnative`
 
-and run with:
+Or, if you dont have GraalVM installed, you can instead use Docker to build the native executable using:
 
-`./target/jms-quickstart-1.0-SNAPSHOT-runner`
+`mvn clean package -Pnative -Dquarkus.native.container-build=true`.
+
+and then run with:
+
+`./target/qpid-jms-quickstart-1.0-SNAPSHOT-runner`

@@ -5,19 +5,18 @@
         <journal-directory>./target/artemis/journal</journal-directory>
         <large-messages-directory>./target/artemis/large-messages</large-messages-directory>
 
-        <connectors>
-            <connector name="activemq">tcp://localhost:61616</connector>
-        </connectors>
         <acceptors>
-            <acceptor name="activemq">tcp://localhost:61616</acceptor>
+            <acceptor name="amqp">tcp://localhost:5672?protocols=AMQP</acceptor>
         </acceptors>
 
         <security-enabled>false</security-enabled>
 
-        <queues>
-            <queue name="foo">
-                <address>prices</address>
-            </queue>
-        </queues>
+        <addresses>
+            <address name="prices">
+                <anycast>
+                    <queue name="prices" />
+                </anycast>
+            </address>
+        </addresses>
     </core>
 </configuration>
