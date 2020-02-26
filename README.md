@@ -1,6 +1,6 @@
 # Quarkus Qpid JMS Quickstart
 
-This project illustrates how you can use the [Apache Qpid](https://qpid.apache.org/) JMS client with [Quarkus](https://quarkus.io/) to interact with AMQP 1.0 servers using the [Quarkus Qpid JMS](https://github.com/amqphub/quarkus-qpid-jms) extension.
+This project illustrates how you can use the [Apache Qpid JMS](https://qpid.apache.org/components/jms/) client with [Quarkus](https://quarkus.io/) to interact with AMQP 1.0 servers using the [Quarkus Qpid JMS extension](https://github.com/amqphub/quarkus-qpid-jms).
 
 ## AMQP server
 
@@ -17,7 +17,7 @@ The application can be started using:
 mvn quarkus:dev
 ```
 
-Then, open your browser to `http://localhost:8080/prices.html`, and you should see a button to fetch the last price.
+Then, open your browser to [http://localhost:8080/prices.html](http://localhost:8080/prices.html), and you should see a button to fetch the latest price.
 
 ## Anatomy
 
