@@ -27,7 +27,7 @@ In addition to the [prices.html](src/main/resources/META-INF/resources/prices.ht
 * `PriceConsumer` - the [PriceConsumer](src/main/java/org/acme/jms/PriceConsumer.java) receives the JMS message and stores the last price.
 * `PriceResource`  - the [PriceResource](src/main/java/org/acme/jms/PriceResource.java) gets the latest price from the PriceConsumer and returns it to the browser.
 
-The configuration is located in the application configuration.
+The client configuration is located in the [application.properties](src/main/resources/application.properties) configuration file.
 
 ## Running in native
 
