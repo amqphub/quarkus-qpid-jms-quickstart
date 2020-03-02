@@ -15,7 +15,7 @@
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
 
         <!--TODO: move to using the platform bom once the extension is included, then remove below prop -->
-        <quarkus-qpid-jms.version>0.11.2</quarkus-qpid-jms.version>
+        <quarkus-qpid-jms.version>0.11.3</quarkus-qpid-jms.version>
         <!--TODO: once 1.3.0 is available, use quarkus-test-artemis and remove this prop -->
         <artemis.version>2.11.0</artemis.version>
     </properties>
