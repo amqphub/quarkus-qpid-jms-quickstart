@@ -37,7 +37,7 @@ You can compile the application into a native binary using:
 
 Or, if you dont have GraalVM installed, you can instead use Docker to build the native executable using:
 
-`mvn clean package -Pnative -Dquarkus.native.container-build=true`.
+`mvn clean package -Pnative -Dquarkus.native.container-build=true`
 
 and then run with:
 
