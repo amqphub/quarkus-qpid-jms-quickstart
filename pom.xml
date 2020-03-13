@@ -12,16 +12,15 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <quarkus-plugin.version>1.2.1.Final</quarkus-plugin.version>
-    <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
+    <quarkus-plugin.version>1.3.0.Final</quarkus-plugin.version>
+    <!--TODO: use quarkus-universe-bom once updated platform bom with extension included is available -->
+    <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-    <quarkus.platform.version>1.2.1.Final</quarkus.platform.version>
+    <quarkus.platform.version>1.3.0.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
 
     <!--TODO: remove below prop once updated platform bom with extension included is available -->
-    <quarkus-qpid-jms.version>0.11.3</quarkus-qpid-jms.version>
-    <!--TODO: once 1.3.0 is available, just use quarkus-test-artemis and remove this prop -->
-    <artemis.version>2.11.0</artemis.version>
+    <quarkus-qpid-jms.version>0.12.0</quarkus-qpid-jms.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -64,19 +63,6 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-test-artemis</artifactId>
       <scope>test</scope>
-    </dependency>
-    <!--TODO: remove once Quarkus 1.3.0 is available, when quarkus-test-artemis includes this -->
-    <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>artemis-amqp-protocol</artifactId>
-      <version>${artemis.version}</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.activemq</groupId>
-          <artifactId>artemis-server</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
   </dependencies>
   <build>
