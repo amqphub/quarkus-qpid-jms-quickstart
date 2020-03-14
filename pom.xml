@@ -20,7 +20,7 @@
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
 
     <!--TODO: remove below prop once updated platform bom with extension included is available -->
-    <quarkus-qpid-jms.version>0.12.0</quarkus-qpid-jms.version>
+    <quarkus-qpid-jms.version>0.13.0</quarkus-qpid-jms.version>
   </properties>
   <dependencyManagement>
     <dependencies>
