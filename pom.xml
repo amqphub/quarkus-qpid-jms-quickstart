@@ -127,5 +127,48 @@
         <quarkus.package.type>native</quarkus.package.type>
       </properties>
     </profile>
+
+    <!-- Helper profile,  allows managing extension version normally set from the Quarkus Platform BOM.
+      Example use: Build using Quarkus Master and its BOM instead:
+
+      mvn clean verify -Pextension-version,native -Dquarkus-qpid-jms.version=<version> -Dquarkus-plugin.version=999-SNAPSHOT \
+        -Dquarkus.platform.artifact-id=quarkus-bom -Dquarkus.platform.version=999-SNAPSHOT   -->
+    <profile>
+      <id>extension-version</id>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>org.amqphub.quarkus</groupId>
+            <artifactId>quarkus-qpid-jms</artifactId>
+            <version>${quarkus-qpid-jms.version}</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-enforcer-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>enforce-extension-version-set</id>
+                <goals>
+                  <goal>enforce</goal>
+                </goals>
+                <configuration>
+                  <rules>
+                    <requireProperty>
+                      <property>quarkus-qpid-jms.version</property>
+                      <message>You must set the quarkus-qpid-jms.version property!</message>
+                    </requireProperty>
+                  </rules>
+                  <fail>true</fail>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 </project>
