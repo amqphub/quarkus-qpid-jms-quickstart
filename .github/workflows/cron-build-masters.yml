@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'amqphub/quarkus-qpid-jms-quickstart'
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
