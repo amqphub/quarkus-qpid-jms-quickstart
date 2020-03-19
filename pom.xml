@@ -13,14 +13,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus-plugin.version>1.3.0.Final</quarkus-plugin.version>
-    <!--TODO: use quarkus-universe-bom once updated platform bom with extension included is available -->
-    <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+    <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.3.0.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
-
-    <!--TODO: remove below prop once updated platform bom with extension included is available -->
-    <quarkus-qpid-jms.version>0.13.0</quarkus-qpid-jms.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -30,12 +26,6 @@
         <version>${quarkus.platform.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <!--TODO: remove below once the platform bom with extension included is available -->
-      <dependency>
-        <groupId>org.amqphub.quarkus</groupId>
-        <artifactId>quarkus-qpid-jms</artifactId>
-        <version>${quarkus-qpid-jms.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
