@@ -1,6 +1,8 @@
 # Quarkus Qpid JMS Quickstart
 
-This project illustrates how you can use the [Apache Qpid JMS](https://qpid.apache.org/components/jms/) client with [Quarkus](https://quarkus.io/) to interact with AMQP 1.0 servers using the [Quarkus Qpid JMS extension](https://github.com/amqphub/quarkus-qpid-jms).
+This project illustrates how you can use the AMQP JMS client from [Apache Qpid](https://qpid.apache.org/components/jms/) to interact with AMQP 1.0 servers in a [Quarkus](https://quarkus.io/) application using the [Quarkus Qpid JMS extension](https://github.com/amqphub/quarkus-qpid-jms).
+
+A step by step outline is available in the Quarkus website [JMS guide](https://quarkus.io/guides/jms), or quick overview details can be found below.
 
 ## AMQP server
 
