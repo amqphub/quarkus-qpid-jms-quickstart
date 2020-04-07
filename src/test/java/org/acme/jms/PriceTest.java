@@ -1,4 +1,4 @@
-package org.acme.artemis;
+package org.acme.jms;
 
 import static org.hamcrest.Matchers.matchesPattern;
 
