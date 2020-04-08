@@ -1,6 +1,7 @@
 package org.acme.jms;
 
 import static org.hamcrest.Matchers.matchesPattern;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +15,11 @@ import io.restassured.RestAssured;
 public class PriceTest {
 
     @Test
-    public void testLastPrice() throws InterruptedException {
-        Thread.sleep(100L);
+    public void testLastPrice() throws Exception {
+        assertTrue(Wait.waitFor(() -> {
+            return RestAssured.given().when().get("/prices/last").getStatusCode() == 200;
+        }, 4000, 25), "Price didnt became available in allotted time");
+
         RestAssured.given()
                 .when().get("/prices/last")
                 .then()
