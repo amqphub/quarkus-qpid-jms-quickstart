@@ -5,6 +5,8 @@
         <journal-directory>./target/artemis/journal</journal-directory>
         <large-messages-directory>./target/artemis/large-messages</large-messages-directory>
 
+	<max-disk-usage>100</max-disk-usage>
+
         <acceptors>
             <acceptor name="amqp">tcp://localhost:5672?protocols=AMQP</acceptor>
         </acceptors>
