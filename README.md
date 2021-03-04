@@ -43,4 +43,4 @@ Or, if you dont have GraalVM installed, you can instead use Docker to build the 
 
 and then run with:
 
-`./target/jms-quickstart-1.0-SNAPSHOT-runner`
+`./target/jms-quickstart-1.0.0-SNAPSHOT-runner`
