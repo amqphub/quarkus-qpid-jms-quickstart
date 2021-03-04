@@ -1,6 +1,13 @@
 name: "Build"
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    paths-ignore:
+      - '.github/workflows/cron-build-*.yml'
+  pull_request:
+    paths-ignore:
+      - '.github/workflows/cron-build-*.yml'
+  workflow_dispatch:
 
 jobs:
   build:
