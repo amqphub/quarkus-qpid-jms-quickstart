@@ -28,6 +28,7 @@ jobs:
           path: |
             ~/.m2/repository
             !~/.m2/repository/io/quarkus
+            !~/.m2/repository/org/amqphub/quarkus
           key: ${{ runner.os }}-cron-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-cron-maven
