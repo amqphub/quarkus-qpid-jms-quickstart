@@ -136,6 +136,11 @@
         -Dquarkus.platform.artifact-id=quarkus-bom -Dquarkus.platform.version=999-SNAPSHOT   -->
     <profile>
       <id>extension-version</id>
+      <activation>
+        <property>
+          <name>extension-version</name>
+        </property>
+      </activation>
       <dependencyManagement>
         <dependencies>
           <dependency>

@@ -50,11 +50,11 @@ jobs:
         run: |
           git clone --depth 1 --branch main https://github.com/amqphub/quarkus-qpid-jms.git && cd quarkus-qpid-jms && echo "Current Quarkus Qpid JMS commit:" $(git rev-parse HEAD)
           mvn release:update-versions -DdevelopmentVersion=999-SNAPSHOT
-          mvn -B clean install -DskipTests -DskipITs -Dquarkus.version=999-SNAPSHOT
+          mvn -B clean install -DskipTests -DskipITs -Dquarkus-version=999-SNAPSHOT
 
       - name: Build - JVM
-        run: mvn -B clean verify -Pextension-version -Dquarkus-qpid-jms.version=999-SNAPSHOT -Dquarkus-plugin.version=999-SNAPSHOT -Dquarkus.platform.artifact-id=quarkus-bom -Dquarkus.platform.version=999-SNAPSHOT
+        run: mvn -B clean verify -Dextension-version -Dquarkus-qpid-jms.version=999-SNAPSHOT -Dquarkus-plugin.version=999-SNAPSHOT -Dquarkus.platform.artifact-id=quarkus-bom -Dquarkus.platform.version=999-SNAPSHOT
 
       - name: Build - Native
         if: matrix.graal != 'none'
-        run: mvn -B clean verify -Pextension-version -Dquarkus-qpid-jms.version=999-SNAPSHOT -Dquarkus-plugin.version=999-SNAPSHOT -Dquarkus.platform.artifact-id=quarkus-bom -Dquarkus.platform.version=999-SNAPSHOT -Dnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-native-image:${{ matrix.graal }}-java${{ matrix.java }}
+        run: mvn -B clean verify -Dextension-version -Dquarkus-qpid-jms.version=999-SNAPSHOT -Dquarkus-plugin.version=999-SNAPSHOT -Dquarkus.platform.artifact-id=quarkus-bom -Dquarkus.platform.version=999-SNAPSHOT -Dnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-native-image:${{ matrix.graal }}-java${{ matrix.java }}
