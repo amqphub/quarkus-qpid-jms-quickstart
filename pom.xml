@@ -17,7 +17,7 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>2.7.5.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
-    <quarkus-test-artemis-version>1.0.1</quarkus-test-artemis-version>
+    <quarkus-test-artemis-version>1.0.5</quarkus-test-artemis-version>
   </properties>
   <dependencyManagement>
     <dependencies>
