@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         java: [ 11 , 17 ]
-        graal: [ 22.2.0 ]
+        graal: [ 22.3.0 ]
 
     steps:
       - uses: actions/checkout@v3
@@ -42,4 +42,4 @@ jobs:
 
       - name: Build - Native
         if: matrix.graal != 'none'
-        run: mvn -B clean verify -Dnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-native-image:${{ matrix.graal }}-java${{ matrix.java }}
+        run: mvn -B clean verify -Pnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-native-image:${{ matrix.graal }}-java${{ matrix.java }}
