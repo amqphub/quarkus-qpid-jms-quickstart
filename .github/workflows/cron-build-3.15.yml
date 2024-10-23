@@ -1,0 +1,50 @@
+name: "Cron Build - 3.15.x"
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: github.repository == 'amqphub/quarkus-qpid-jms-quickstart' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ 17 , 21 ]
+        mandrel: [ default ]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: quarkus-3.15.x
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository/*/*/*
+            !~/.m2/repository/io/quarkus
+            !~/.m2/repository/org/amqphub/quarkus
+          key: ${{ runner.os }}-cron-released-3.15.x-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-cron-released-3.15.x-maven
+            ${{ runner.os }}-3.15.x-maven
+
+      - name: Install JDK ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+
+      - name: Build - JVM
+        run: mvn -B -s .github/cron-maven-settings.xml clean verify
+
+      - name: Build - Native (Default Builder Image)
+        if: matrix.mandrel == 'default'
+        run: mvn -B -s .github/cron-maven-settings.xml clean verify -Pnative
+
+      - name: Build - Native (Specific Builder Image)
+        if: matrix.mandrel != 'default'
+        run: mvn -B -s .github/cron-maven-settings.xml clean verify -Pnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-${{ matrix.mandrel }}
