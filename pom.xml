@@ -16,7 +16,7 @@
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.3.1</surefire-plugin.version>
         <maven-enforcer-plugin-version>3.4.1</maven-enforcer-plugin-version>
-        <artemis-version>2.40.0</artemis-version>
+        <artemis-version>2.44.0</artemis-version>
 
         <!-- Helper properties for CI etc testing, allows using the extensions original bom rather than its one from io.quarkus.platform, useful when using Quarkus core directly instead. E.g:
              mvn clean verify -Pnative -Dquarkus.qpid.jms.group-id=org.amqphub.quarkus -Dquarkus.qpid.jms.version=<version> -Dquarkus.platform.group-id=io.quarkus -Dquarkus.platform.version=999-SNAPSHOT -->
