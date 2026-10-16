@@ -47,15 +47,25 @@ jobs:
         run: |
           git clone --depth 1 --branch main https://github.com/amqphub/quarkus-qpid-jms.git && cd quarkus-qpid-jms && echo "Current Quarkus Qpid JMS commit:" $(git rev-parse HEAD)
           mvn release:update-versions -DdevelopmentVersion=999-SNAPSHOT
-          mvn -B clean install -DskipTests -DskipITs -Dquarkus-version=999-SNAPSHOT
+          sed -i "s~<quarkus-version>[^<]*~<quarkus-version>999-SNAPSHOT~g" ./pom.xml
+          git diff
+          mvn -B clean install -DskipTests -DskipITs
+
+      - name: Update Quarkus and Extension Version Properties
+        run: |
+          sed -i "s~<quarkus.platform.version>[^<]*~<quarkus.platform.version>999-SNAPSHOT~g" ./pom.xml
+          sed -i "s~<quarkus.platform.group-id>[^<]*~<quarkus.platform.group-id>io.quarkus~g" ./pom.xml
+          sed -i "s~<quarkus.qpid.jms.version>[^<]*~<quarkus.qpid.jms.version>999-SNAPSHOT~g" ./pom.xml
+          sed -i "s~<quarkus.qpid.jms.group-id>[^<]*~<quarkus.qpid.jms.group-id>org.amqphub.quarkus~g" ./pom.xml
+          git diff
 
       - name: Build - JVM
-        run: mvn -B -s .github/cron-maven-settings.xml clean verify -Dquarkus.qpid.jms.group-id=org.amqphub.quarkus -Dquarkus.qpid.jms.version=999-SNAPSHOT -Dquarkus.platform.group-id=io.quarkus -Dquarkus.platform.version=999-SNAPSHOT
+        run: mvn -B -s .github/cron-maven-settings.xml clean verify
 
       - name: Build - Native (Default Builder Image)
         if: matrix.mandrel == 'default'
-        run: mvn -B -s .github/cron-maven-settings.xml clean verify -Pnative -Dquarkus.qpid.jms.group-id=org.amqphub.quarkus -Dquarkus.qpid.jms.version=999-SNAPSHOT -Dquarkus.platform.group-id=io.quarkus -Dquarkus.platform.version=999-SNAPSHOT
+        run: mvn -B -s .github/cron-maven-settings.xml clean verify -Dnative
 
       - name: Build - Native (Specific Builder Image)
         if: matrix.mandrel != 'default'
-        run: mvn -B -s .github/cron-maven-settings.xml clean verify -Pnative -Dquarkus.qpid.jms.group-id=org.amqphub.quarkus -Dquarkus.qpid.jms.version=999-SNAPSHOT -Dquarkus.platform.group-id=io.quarkus -Dquarkus.platform.version=999-SNAPSHOT -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-${{ matrix.mandrel }}
+        run: mvn -B -s .github/cron-maven-settings.xml clean verify -Dnative -Dquarkus.native.container-build=true -Dquarkus.native.builder-image=quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-${{ matrix.mandrel }}
